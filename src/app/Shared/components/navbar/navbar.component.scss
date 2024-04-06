@@ -1,13 +1,18 @@
 .language-span {
-    font-size: 2rem;
+    
     cursor: pointer;
   }
   .language-span:hover {
     text-decoration: underline;
   }
+  .nav-link{
+    color: rgba(49, 47, 45, 0.49);
+    font-size: 2rem;
+  }
   .nav-link:hover{
     cursor: pointer;
     text-decoration: underline;
+   
   }
   .logo{
     font-size: 3rem;
@@ -30,4 +35,17 @@
     border-top: solid 1px gray;
     z-index: 1;
 
+  }
+  .cart-icon{
+    color:rgba(49, 47, 45, 0.49); 
+    font-size: 2.5rem;
+  }
+  .picked-proucts-count{
+    background-color: rgba(49, 47, 45, 0.49);
+    color: white;
+ font-size: 1rem;
+    border-radius: 50%;
+    padding: .5em;
+    text-align: center;
+    align-items: center;
   }

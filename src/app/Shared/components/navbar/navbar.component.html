@@ -9,13 +9,13 @@
             </a>
             @if(siteLang == 'ar'){
 
-            <span class="mx-3 py-2 language-span" (click)="changeLanguage('en')">
+            <span class="mx-3 py-2 language-span  nav-link" (click)="changeLanguage('en')">
                 English
             </span>
             }
             @if(siteLang == 'en'){
 
-            <span class="mx-3 py-2 language-span" (click)="changeLanguage('ar')">
+            <span class="mx-3 py-2 language-span  nav-link" (click)="changeLanguage('ar')">
                 العربية
             </span>
             }
@@ -36,8 +36,11 @@
                    
 
                         <li class="mx-3 nav-link" [routerLink]="['/','checkout']">
-                            {{'cart' | translate}}
-                          ( {{pickedProducts}} ) 
+                            <span class="material-symbols-outlined cart-icon">
+                                shopping_cart 
+                                </span> 
+                                <span class="picked-proucts-count">{{pickedProducts}}</span>
+                         
     
                         </li>
                     }
@@ -77,13 +80,13 @@
             </a>
             @if(siteLang == 'ar'){
 
-            <span class="mx-3 py-2 language-span" (click)="changeLanguage('en')">
+            <span class="mx-3 py-2 language-span nav-link" (click)="changeLanguage('en')">
                 English
             </span>
             }
             @if(siteLang == 'en'){
 
-            <span class="mx-3 py-2 language-span" (click)="changeLanguage('ar')">
+            <span class="mx-3 py-2 language-span  nav-link" (click)="changeLanguage('ar')">
                 العربية
             </span>
             }
@@ -102,8 +105,11 @@
                     {
 
                         <li class="mx-3 nav-link" [routerLink]="['/','checkout']">
-                            {{'cart' | translate}}
-                            ( {{pickedProducts}} )
+                            <span class="material-symbols-outlined">
+                                shopping_cart  
+                                </span>
+                                <span class="picked-proucts-count"> {{pickedProducts}} </span>
+                           
                         </li>
                     }
 

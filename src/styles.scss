@@ -14,7 +14,7 @@ body {
     height: 100%;
     font-size: 10px;
 }
-$basic-color:#0a259e;
+$basic-color:#4763e0;
 $danger-color:#e91160;
 
 body {
@@ -65,6 +65,16 @@ body {
 }
   .danger-color{
     color: $danger-color;
+  }
+  .transparent-bg{
+    background-color: rgba(211, 205, 205, 0.437);
+    border-radius: 10px;
+    transition: all 1s;
+    overflow: hidden;
+    &:hover{
+      transform: scale(1.05);
+      cursor: pointer;
+    }
   }
 .primary-btn{
 

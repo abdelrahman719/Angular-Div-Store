@@ -1,3 +1,5 @@
+@import '../styles.scss';
+
 .spinner {
     left: 0;
     top: 0;
@@ -6,4 +8,15 @@
     z-index: 999;
     overflow: hidden;
     position: fixed;
+  }
+
+  ::ng-deep .mat-mdc-form-field{
+   // border: red solid 1px;
+   // background-color: red !important;
+  }
+  ::ng-deep .mdc-text-field--filled{
+    border: $basic-color 1px solid;
+  }
+  ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background: transparent !important;
   }
