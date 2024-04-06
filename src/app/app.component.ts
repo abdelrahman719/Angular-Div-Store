@@ -9,6 +9,8 @@ import { AppState } from './Store/app.state';
 import { Login, Logout } from './Store/actions/auth.actions';
 import { addToCart, getCartProducts } from './Store/actions/cart.actions';
 import { Subscription } from 'rxjs';
+import { LoaderService } from './Core/services/loader.service';
+import { LoadingComponent } from './Shared/components/loading/loading.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -17,7 +19,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, TranslateModule],
+  imports: [RouterOutlet, NavbarComponent, TranslateModule ,LoadingComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
@@ -25,7 +27,7 @@ export class AppComponent implements OnInit ,OnDestroy {
   title = 'ecommerceTask';
   authStoreSubcription: Subscription | null = null;
   userLoggedIn:boolean=false
-  constructor(private translateService: TranslateService, private store: Store<AppState>) {
+  constructor(private translateService: TranslateService, private store: Store<AppState> ,public loaderService: LoaderService,) {
     // translateService.setDefaultLang('en');
     // translateService.use('en');
   }

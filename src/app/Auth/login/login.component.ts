@@ -29,7 +29,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatButtonModule , TranslateModule],
+  imports: [FormsModule, MatFormFieldModule, MatInputModule, ReactiveFormsModule, MatButtonModule, TranslateModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
@@ -39,27 +39,42 @@ export class LoginComponent implements OnInit {
     password: new FormControl('', [Validators.required]),
     role: new FormControl('')
   })
-
+wrongUser:boolean=false;
   matcher = new MyErrorStateMatcher()
 
-  constructor(private router:Router , private AuthService:AuthService , private store:Store<AppState>){
+  constructor(private router: Router, private AuthService: AuthService, private store: Store<AppState>) {
 
   }
 
   logIn() {
-    if(this.AuthService.logIn(this.loginFormGroup))
-      {
+    if (this.AuthService.logIn(this.loginFormGroup)) {
+      debugger
+
+      if ((this.loginFormGroup.value.name == 'test' && this.loginFormGroup.value.password == 'testUser')
+        ||
+        (this.loginFormGroup.value.name == 'admin' && this.loginFormGroup.value.password == 'adminUser')
+      ) {
         let userAuth = localStorage.getItem('userAuth');
         if (userAuth) {
           this.store.dispatch(new Login(JSON.parse(userAuth)))
-          this.router.navigate(['/','products'])
-        }else{
+          this.router.navigate(['/', 'products'])
+        } else {
           this.store.dispatch(new Logout())
         }
+
+      }
+      else {
+        this.wrongUser=true
+        this.store.dispatch(new Logout())
+        return
       }
 
-   
- 
+
+
+    }
+
+
+
   }
 
   ngOnInit() {

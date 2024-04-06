@@ -26,6 +26,8 @@ export function cartReducer(
 
     case cartActions.types.REMOVE_CARD_PRODUCT:
       return { ...state, cart: [...action.payload] };
+    case cartActions.types.CLEAR_CART:
+      return { ...state, cart: [] };
 
     case cartActions.types.UPDATE_CARD_COUNTER:
       updatedCart = state.cart.map(obj=>{

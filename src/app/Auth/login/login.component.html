@@ -26,8 +26,11 @@
         <mat-error>Password is <strong>required</strong></mat-error>
       }
     </mat-form-field>
+    @if(wrongUser){
+      <h3 class="text-red-800 text-center">User not found</h3>
+    }
 
 
-    <button [disabled]="loginFormGroup.invalid" type="submit" class="primary-btn">{{ 'log-in' |translate}}</button>
+    <button [disabled]="loginFormGroup.invalid " type="submit" class="primary-btn">{{ 'log-in' |translate}}</button>
   </form>
 </div>

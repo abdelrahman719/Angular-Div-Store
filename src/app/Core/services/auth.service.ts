@@ -5,6 +5,7 @@ import { AppState } from '../../Store/app.state';
 import { Store } from '@ngrx/store';
 import { Login, Logout } from '../../Store/actions/auth.actions';
 import { Router } from '@angular/router';
+import { clearCart } from '../../Store/actions/cart.actions';
 @Injectable({
   providedIn: 'root'
 })
@@ -35,6 +36,7 @@ export class AuthService {
     localStorage.clear();
     this.router.navigate(['/'])
     this.store.dispatch(new Logout())
+    this.store.dispatch(new clearCart([]))
   }
   getUserData():userData  {
     let temp = localStorage.getItem('userAuth')

@@ -62,7 +62,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
         this.userLoggedIn=false
       }
 
-      if (this.userType = 'user') {
+      if (this.userType == 'user') {
         this.store.select('cart').subscribe((products) => {
           let productsList = products['cart']
           let str = JSON.stringify(productsList)
