@@ -33,6 +33,7 @@
                     </li>
                     <li class="mx-3 nav-link" [routerLink]="['/','cart']">
                         {{'cart' | translate}}
+                      ( {{pickedProducts}} ) 
 
                     </li>
                     <li (click)="logOut()" class="mx-3 primary-btn" [routerLink]="['/' ]">
@@ -66,7 +67,7 @@
     <div class="top-mobile-nav px-5 py-5 mx-auto flex justify-between">
         <div class=" flex justify-between items-center">
 
-            <a class=" logo mx-2 text-lg text-blue-800" [routerLink]="['/']">
+            <a class=" logo mx-2 text-lg text-blue-800" [routerLink]="['/','products']">
                 Div Store
             </a>
             @if(siteLang == 'ar'){

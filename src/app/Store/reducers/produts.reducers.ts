@@ -31,13 +31,12 @@ export function productsReducer(
       return { ...state , products:  updatedProducts  };
 
     case productsActions.types.DELETE_PRODUCT:
-      debugger
-      
+  
        updatedProducts = state.products.filter(product => {
       return product.id !== action.payload.id
-   
+
       });
-      debugger
+      
       return { ...state , products:  updatedProducts  };
 
     default:
