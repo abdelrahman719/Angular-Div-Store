@@ -1,0 +1,22 @@
+
+{
+  "dir":"ltr",
+  "currency":"LE",
+  "add-to-cart":"Add to cart",
+  "log-in":"Log in",
+  "products":"products",
+  "cart":"cart",
+  "log-out":"Log out",
+  "categories":"categories",
+  "user-name":"User Name",
+  "password":"Password",
+  "product-title":"Product name",
+  "product-desc":"Product description",
+  "product-price":"Product price",
+  "product-image":"Product image",
+  "product-rating":"Product rating",
+  "add-product":"Add product",
+  "product-id":"Product code ",
+  "category":"Category"
+}
+

@@ -1,0 +1,33 @@
+.language-span {
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  .language-span:hover {
+    text-decoration: underline;
+  }
+  .nav-link:hover{
+    cursor: pointer;
+    text-decoration: underline;
+  }
+  .logo{
+    font-size: 3rem;
+    letter-spacing: .05em;
+  }
+  .img-profile{
+    width: 4rem;
+    border-radius: 50%;
+  }
+
+.top-mobile-nav{
+  border-bottom: solid 1px gray;
+}
+  .bottom-mobile-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border-top: solid 1px gray;
+    z-index: 1;
+
+  }

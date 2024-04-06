@@ -1,0 +1,20 @@
+{
+  "dir":"rtl",
+  "currency":"جنيه مصرى",
+  "add-to-cart":"اضف الى السلة",
+  "log-in":"تسجيل الدخول",
+  "products":"المنتجات",
+  "cart":"السلة",
+  "log-out":"تسجيل الخروج",
+  "categories":"الفئات",
+  "category":"الفئة",
+  "user-name":"اسم المستخدم",
+  "password":"كلمة السر",
+  "product-title":"اسم المنتج",
+  "product-desc":"وصف المنتج",
+  "product-price":"سعر المنتج",
+  "product-image":"صورة المنتج ",
+  "product-rating":"تقييم المنتج",
+  "product-id":"كود المنتج",
+  "add-product":"اضافة منتج"
+}

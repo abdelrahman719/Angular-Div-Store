@@ -1,0 +1,33 @@
+
+<div class=" login-cont   flex justify-center items-center text-center flex-col ">
+  <h1 class="text-center text-blue-800 py-3 header  ">Div Store 🛒</h1>
+
+<form [formGroup]="loginFormGroup" class="example-form" (ngSubmit)="logIn()">
+    <mat-form-field class="example-full-width">
+      <mat-label>{{ 'user-name' |translate}}</mat-label>
+      <input type="text" matInput formControlName="name" [errorStateMatcher]="matcher"
+            >
+  
+      @if (loginFormGroup.get('name')?.hasError('name') && !loginFormGroup.get('name')?.hasError('required')) {
+        <mat-error>Please enter a valid name </mat-error>
+      }
+      @if (loginFormGroup.get('name')?.hasError('required')) {
+        <mat-error>User name is <strong>required</strong></mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+      <mat-label>{{ 'password' |translate}}</mat-label>
+      <input type="password" matInput formControlName="password" [errorStateMatcher]="matcher"
+>
+      
+   
+      @if (loginFormGroup.get('password')?.hasError('required')) {
+        <mat-error>Password is <strong>required</strong></mat-error>
+      }
+    </mat-form-field>
+
+
+    <button [disabled]="loginFormGroup.invalid" type="submit" class="primary-btn">{{ 'log-in' |translate}}</button>
+  </form>
+</div>
