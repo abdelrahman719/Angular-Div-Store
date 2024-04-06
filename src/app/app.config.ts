@@ -4,7 +4,7 @@ import { Routes, provideRouter } from '@angular/router';
 
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { ProductsComponent } from './Features/products/products.component';
-import { CartComponent } from './Features/cart/cart.component';
+
 import { LoginComponent } from './Auth/login/login.component';
 import { NotfoundComponent } from './Shared/components/notfound/notfound.component';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -20,7 +20,6 @@ import * as appState from '../app/Store/app.state'
 const routes: Routes = [
   { path: '', component: LoginComponent },
   { path: 'login', redirectTo: '' },
-  { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'products', component: ProductsComponent },
   { path: 'product-details/:id', component: ProductDetailsComponent },

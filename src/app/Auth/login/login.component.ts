@@ -15,6 +15,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { Router } from '@angular/router';
 import { AuthService } from '../../Core/services/auth.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { AppState } from '../../Store/app.state';
+import { Store } from '@ngrx/store';
+import { Login, Logout } from '../../Store/actions/auth.actions';
 /** Error when invalid control is dirty, touched, or submitted. */
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -39,15 +42,22 @@ export class LoginComponent implements OnInit {
 
   matcher = new MyErrorStateMatcher()
 
-  constructor(private router:Router , private AuthService:AuthService){
+  constructor(private router:Router , private AuthService:AuthService , private store:Store<AppState>){
 
   }
 
   logIn() {
     if(this.AuthService.logIn(this.loginFormGroup))
       {
-         this.router.navigate(['/','products'])
+        let userAuth = localStorage.getItem('userAuth');
+        if (userAuth) {
+          this.store.dispatch(new Login(JSON.parse(userAuth)))
+          this.router.navigate(['/','products'])
+        }else{
+          this.store.dispatch(new Logout())
+        }
       }
+
    
  
   }

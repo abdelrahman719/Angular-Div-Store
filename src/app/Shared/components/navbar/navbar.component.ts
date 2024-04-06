@@ -6,15 +6,16 @@ import { userData } from '../../../Core/interfaces/userData';
 import { AppState } from '../../../Store/app.state';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
+import { addToCart } from '../../../Store/actions/cart.actions';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [RouterModule , TranslateModule],
+  imports: [RouterModule, TranslateModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })
-export class NavbarComponent implements OnInit  , OnDestroy {
+export class NavbarComponent implements OnInit, OnDestroy {
 
 
   isMobileView = false;
@@ -34,45 +35,55 @@ export class NavbarComponent implements OnInit  , OnDestroy {
     password: '',
     role: ''
   }
-  userType:string=''
-  pickedProducts:number=0
+  userType: string = ''
+  pickedProducts: number = 0
   cartStoreSubcription: Subscription | null = null;
   authStoreSubcription: Subscription | null = null;
-  constructor(private translateService: TranslateService, 
+  userLoggedIn:boolean=false
+  constructor(private translateService: TranslateService,
     private authService: AuthService,
     private store: Store<AppState>,) {
 
   }
   ngOnInit(): void {
-    this.checkMobileView() 
+    this.checkMobileView()
     this.getUserData()
     let lang = localStorage.getItem('siteLang');
-    if(lang){
+    if (lang) {
       this.siteLang = lang
     }
 
     this.authStoreSubcription = this.store.select('auth').subscribe((authData) => {
       this.userType = authData.user?.role!;
+      debugger
+      if(this.userType){
+        this.userLoggedIn=true
+      }else{
+        this.userLoggedIn=false
+      }
 
-      if ( this.userType = 'user') {
-        
-        this.store.select('cart').subscribe((products)=>{
+      if (this.userType = 'user') {
+        this.store.select('cart').subscribe((products) => {
           let productsList = products['cart']
-          if(productsList){
-            this.pickedProducts =0
-            productsList.forEach(obj=>{
+          let str = JSON.stringify(productsList)
+          localStorage.setItem('cart' , str)
+          if (productsList) {
+            this.pickedProducts = 0
+            productsList.forEach(obj => {
               this.pickedProducts += obj.count
             })
           }
+
         })
-      } 
+
+      }
 
     });
 
 
 
   }
-  
+
   changeLanguage(language: string) {
 
     localStorage.setItem('siteLang', language);
@@ -83,7 +94,7 @@ export class NavbarComponent implements OnInit  , OnDestroy {
   getUserData() {
     this.user = this.authService.getUserData()
   }
-  logOut(){
+  logOut() {
     this.authService.logOut()
   }
 

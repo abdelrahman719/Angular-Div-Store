@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "ng deploy vercel" :"git submodule init && git submodule update && ng build --prod"
   },
   "private": true,
   "dependencies": {

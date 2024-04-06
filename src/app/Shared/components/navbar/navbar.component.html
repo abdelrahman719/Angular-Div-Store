@@ -31,19 +31,19 @@
                     <li class="mx-3 nav-link" [routerLink]="['/' ,'products']">
                         {{'products' | translate}}
                     </li>
-                    <li class="mx-3 nav-link" [routerLink]="['/','cart']">
+                    <li class="mx-3 nav-link" [routerLink]="['/','checkout']">
                         {{'cart' | translate}}
                       ( {{pickedProducts}} ) 
 
                     </li>
-                    <li (click)="logOut()" class="mx-3 primary-btn" [routerLink]="['/' ]">
-                        {{'log-out' | translate}}
-                    </li>
-
-
-
-                    @if(user.name!=='')
+                    
+                    
+                    
+                    @if(userLoggedIn)
                     {
+                        <li (click)="logOut()" class="mx-3 primary-btn" [routerLink]="['/' ]">
+                            {{'log-out' | translate}}
+                        </li>
 
                     <li class="mx-3 flex items-center">
                         <span class="text-blue-800">
@@ -93,7 +93,7 @@
                     <li class="mx-3 nav-link" [routerLink]="['/' ,'products']">
                         {{'products' | translate}}
                     </li>
-                    <li class="mx-3 nav-link" [routerLink]="['/','cart']">
+                    <li class="mx-3 nav-link" [routerLink]="['/','checkout']">
                         {{'cart' | translate}}
 
                     </li>
@@ -109,11 +109,11 @@
 
     <div class="bottom-mobile-nav px-5 py-2  ">
         <ul class="flex justify-between items-center">
-            <li (click)="logOut()" class="mx-3 primary-btn" [routerLink]="['/' ]">
-                {{'log-out' | translate}}
-            </li>
-            @if(user.name!=='')
+            @if(userLoggedIn)
             {
+                <li (click)="logOut()" class="mx-3 primary-btn" [routerLink]="['/' ]">
+                    {{'log-out' | translate}}
+                </li>
 
             <li class="mx-3 flex items-center">
                 <span class="text-blue-800">
