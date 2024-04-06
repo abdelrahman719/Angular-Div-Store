@@ -15,7 +15,7 @@
    // background-color: red !important;
   }
   ::ng-deep .mdc-text-field--filled{
-    border: $basic-color 1px solid;
+    border: rgb(85, 85, 85) 1px solid;
   }
   ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
     background: transparent !important;
