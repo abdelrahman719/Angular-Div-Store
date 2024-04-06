@@ -1,3 +1,4 @@
+import { count } from 'rxjs';
 import { product } from '../../Core/interfaces/product';
 
 import * as cartActions from '../actions/cart.actions';
@@ -25,6 +26,17 @@ export function cartReducer(
 
     case cartActions.types.REMOVE_CARD_PRODUCT:
       return { ...state, cart: [...action.payload] };
+
+    case cartActions.types.UPDATE_CARD_COUNTER:
+      updatedCart = state.cart.map(obj=>{
+        if(obj.product.id == action.payload.product.id){
+          return {...obj , count:action.payload.count}
+        }
+        return obj
+      })
+      console.log('updatedCart: ', updatedCart);
+      debugger
+      return { ...state, cart: updatedCart };
 
     default:
       return state;

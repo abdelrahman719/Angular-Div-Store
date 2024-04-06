@@ -55,7 +55,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
     this.authStoreSubcription = this.store.select('auth').subscribe((authData) => {
       this.userType = authData.user?.role!;
-      debugger
+      
       if(this.userType){
         this.userLoggedIn=true
       }else{
@@ -70,7 +70,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
           if (productsList) {
             this.pickedProducts = 0
             productsList.forEach(obj => {
-              this.pickedProducts += obj.count
+              this.pickedProducts +=Number(obj.count) 
             })
           }
 
