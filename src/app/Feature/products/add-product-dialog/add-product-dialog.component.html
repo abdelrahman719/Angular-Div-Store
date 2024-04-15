@@ -1,0 +1,61 @@
+<div class="container-md  h-full flex justify-center items-center text-center flex-col my-6 ">
+    <h3 class="text-center text-blue-800 py-3 underline   "> {{editMoode ?'Edit product' : 'Add new product'}} </h3>
+
+    <form (ngSubmit)="addProduct()" [formGroup]="addProductForm" class="example-form flex justify-center flex-col">
+        <mat-form-field class="example-full-width">
+            <mat-label>Product title </mat-label>
+            <input   type="text" matInput formControlName="title" [errorStateMatcher]="matcher">
+
+            @if (addProductForm.get('title')?.hasError('required')) {
+            <mat-error>Product title is <strong>required</strong></mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Product price </mat-label>
+            <input type="number" matInput formControlName="price" [errorStateMatcher]="matcher">
+
+            @if (addProductForm.get('price')?.hasError('price') && !addProductForm.get('price')?.hasError('required')) {
+            <mat-error>Please enter a valid value</mat-error>
+            }
+            @if (addProductForm.get('price')?.hasError('required')) {
+            <mat-error>Product price is <strong>required</strong></mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Product description </mat-label>
+            <input type="text" matInput formControlName="description" [errorStateMatcher]="matcher">
+
+            @if (addProductForm.get('description')?.hasError('required')) {
+            <mat-error>Product description is <strong>required</strong></mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Product image url </mat-label>
+            <input placeholder="http://www.image......" type="text" matInput formControlName="image" [errorStateMatcher]="matcher">
+
+            @if (addProductForm.get('image')?.hasError('required')) {
+            <mat-error>Product image url <strong>required</strong></mat-error>
+            }
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Product category </mat-label>
+            <input type="text" matInput formControlName="category" [errorStateMatcher]="matcher">
+
+            @if (addProductForm.get('category')?.hasError('required')) {
+            <mat-error>Product category is <strong>required</strong></mat-error>
+            }
+        </mat-form-field>
+
+
+        <div class="buttons">
+
+
+            <button [disabled]="addProductForm.invalid" type="submit" class="primary-btn">{{editMoode ?'Edit ' : 'Add '}}</button>
+            <button (click)="cancel()" type="button" class="danger-btn mx-2">Cancel</button>
+        </div>
+    </form>
+</div>

@@ -3,15 +3,15 @@ import { Routes, provideRouter } from '@angular/router';
 
 
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { ProductsComponent } from './Features/products/products.component';
+import { ProductsComponent } from './Feature/products/products.component';
 
 import { LoginComponent } from './Auth/login/login.component';
 import { NotfoundComponent } from './Shared/components/notfound/notfound.component';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
 import { HttpLoaderFactory } from './app.component';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
-import { ProductDetailsComponent } from './Features/products/product-details/product-details.component';
-import { CheckoutComponent } from './Features/checkout/checkout.component';
+import { ProductDetailsComponent } from './Feature/products/product-details/product-details.component';
+import { CheckoutComponent } from './Feature/checkout/checkout.component';
 import { provideStore } from '@ngrx/store';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import * as appState from '../app/Store/app.state'

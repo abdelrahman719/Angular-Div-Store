@@ -1,0 +1,25 @@
+
+@if(product){
+
+    <div class="container w-11/12 mx-auto grid grid-cols-1 lg:grid-cols-2 items-center my-10 py-10  ">
+        <div class="grid-cols-3  mx-5 my-2 ">
+
+            <img class="product-image" [src]="product.image" [alt]="product.title">
+        </div>
+        
+        <div class=" grid-cols-8 p-3">
+            <h5 class="  text-gray-900 title">{{product.title}}</h5>
+            <p class="mb-3  text-gray-700">{{product.description}}</p>
+            <span class="">{{product.price}} {{'currency' | translate}}</span>
+            <div class="flex items-center my-3">
+           
+                <span class="ml-2 rating text-gray-500">⭐ {{product.rating?.rate}} stars ( {{product.rating?.count}} reviews )</span>
+            </div>
+
+            @if(userType=='user'){
+
+                 <button (click)="addToCart(product)" class="primary-btn">{{ 'add-to-cart' |translate}}</button> 
+            }
+        </div>
+    </div>
+}

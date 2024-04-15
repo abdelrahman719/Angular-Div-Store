@@ -1,0 +1,23 @@
+.header{
+    font-size: 2rem;
+    text-align: center;
+    text-decoration: underline;
+
+}
+.list-container{
+    border: solid 1px gray;
+    border-radius: 5px;
+}
+.product-imge{
+    width: 15rem;
+    border-radius: 5px;
+}
+.product-details{
+    .title{
+        font-size: 1.6rem;
+    }
+    .price{
+        font-size: 1.4rem;
+        color: rgb(37, 37, 37);
+    }
+}

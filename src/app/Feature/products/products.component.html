@@ -1,0 +1,159 @@
+@if(userType =='admin'){
+
+<div class="w-11/12 mx-auto mt-6">
+  <button type="button" (click)="openAddProductDialog()" class="primary-btn my-6">{{'add-product' | translate}}</button>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource">
+
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> {{'product-id' | translate}} </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef> {{'product-title' | translate}} </th>
+        <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="price">
+        <th mat-header-cell *matHeaderCellDef> {{'product-price' | translate}} </th>
+        <td mat-cell *matCellDef="let element"> {{element.price}} <span>{{'currency' | translate}}</span></td>
+      </ng-container>
+
+
+      <ng-container matColumnDef="category">
+        <th mat-header-cell *matHeaderCellDef> {{'category' | translate}} </th>
+        <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+      </ng-container>
+      <ng-container matColumnDef="image">
+        <th mat-header-cell *matHeaderCellDef> {{'product-image' | translate}} </th>
+        <td mat-cell *matCellDef="let element">
+          <img class="product-image" [src]="element.image" [alt]="element.title">
+
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> </th>
+        <td mat-cell *matCellDef="let element">
+          <div class="actions">
+            <button (click)="openEditProductDialog(element)" class="material-symbols-outlined">
+
+              settings
+
+            </button>
+            <button (click)="deleteProduct(element.id)" class="material-symbols-outlined danger-color">
+              delete
+            </button>
+            <button [routerLink]="['/' ,'product-details' ,element.id]" class="material-symbols-outlined ">
+              info
+            </button>
+          </div>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 15 ,30]" showFirstLastButtons aria-label="Select page ">
+    </mat-paginator>
+  </div>
+
+</div>
+}
+
+@if(userType =='user'){
+  <div class="flex w-11/12 mx-auto my-10">
+    <mat-form-field class="example-full-width mx-2">
+      <input placeholder="filter by name"  type="text" matInput (input)="filterProducts($event)"  >
+    </mat-form-field>
+  </div>
+  @if(filterMood){
+    <div class="grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 gap-4 my-5">
+    @for(product of allProducts ; track $index){
+
+      <div class=" transparent-bg p-5">
+      
+        <div [routerLink]="['/' , 'product-details',product.id]" class="  ">
+  
+          <img class="product-card-image" [src]="product.image" [alt]="product.title" />
+  
+          <div class="my-5">
+  
+            <h5 class="text-xl font-semibold tracking-tight">{{product.title}}</h5>
+  
+            <div class="flex items-center my-3">
+              <span class="ml-2 rating text-gray-500">⭐ {{product.rating?.rate}} stars ( {{product.rating?.count}}
+                reviews)</span>
+  
+            </div>
+            <div class="flex items-center justify-between">
+              <span class="">{{product.price}} {{'currency' | translate}}</span>
+  
+            </div>
+          </div>
+        </div>
+        @if(userType=='user'){
+  
+        <button (click)="addToCart(product)" class="primary-btn">{{ 'add-to-cart' |translate}}</button>
+        }
+      </div>
+    }
+  </div>
+ 
+  }@else{
+
+    <div class="container w-11/12 mx-auto my-10">
+    
+      <mat-tab-group>
+        @for (obj of productsInCat; track $index) {
+        <mat-tab [label]="obj.category">
+    
+    
+          <div class="grid grid-cols-1 md:grid-cols-4 sm:grid-cols-2 gap-4 my-5">
+            @for( product of obj.products ;track $index){
+            <div class=" transparent-bg p-5">
+    
+              <div [routerLink]="['/' , 'product-details',product.id]" class="  ">
+    
+                <img class="product-card-image" [src]="product.image" [alt]="product.title" />
+    
+                <div class="my-5">
+    
+                  <h5 class="text-xl font-semibold tracking-tight">{{product.title}}</h5>
+    
+                  <div class="flex items-center my-3">
+                    <span class="ml-2 rating text-gray-500">⭐ {{product.rating?.rate}} stars ( {{product.rating?.count}}
+                      reviews)</span>
+    
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="">{{product.price}} {{'currency' | translate}}</span>
+    
+                  </div>
+                </div>
+              </div>
+              @if(userType=='user'){
+    
+              <button (click)="addToCart(product)" class="primary-btn">{{ 'add-to-cart' |translate}}</button>
+              }
+            </div>
+    
+    
+    
+    
+            }
+          </div>
+        </mat-tab>
+    
+    
+        }
+    
+      </mat-tab-group>
+    </div>
+  }
+}

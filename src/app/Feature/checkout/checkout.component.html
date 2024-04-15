@@ -1,0 +1,41 @@
+
+<div class="w-11/12 mx-auto my-6 ">
+    <h5 class="header primary-color my-6">Picked List</h5>
+    <div class="list-container">
+         <ul role="list" class="divide-y ">
+@for(product of cartProducts; track $index ){
+
+    <li class="py-4  px-7">
+        <div class="flex items-center">
+            <div class="p-2 transparent-bg">
+                <img class="product-imge " [src]="product.product.image" [alt]="product.product.title">
+            </div>
+            <div class="product-details px-3">
+                <p class="title">
+                    {{product.product.title}}  
+                </p> 
+                <p class="price">
+                   {{product.product.price}} {{'currency' | translate}}
+                </p>
+                <div class="actions-container">
+                    <button (click)="removeItem($index)" class=" danger-btn"> <span class=" material-symbols-outlined ">delete</span></button>
+                 
+                    <mat-form-field class="example-full-width mx-3">
+                        <input [value]="product.count" type="number" matInput (change)="updateItemCount(product.product ,$event)"  >
+                      </mat-form-field>
+                        
+                </div>
+            </div>
+          
+        </div>
+    </li>
+}
+
+           
+        </ul>
+    </div>
+    <div class="text-center">
+
+        <button class="primary-btn my-3">Checkout</button>
+    </div>
+</div>
